@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Login | Vrise Academy</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f1faf3;
+    color: #26382c;
+}
+
+/* HEADER */
+
+header {
+    background: white;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.logo h2 {
+    color: #198754;
+    font-size: 23px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #198754;
+}
+
+/* MAIN */
+
+.main-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* LOGIN BOX */
+
+.login-container {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+}
+
+/* LEFT SIDE */
+
+.login-left {
+    background: linear-gradient(145deg, #198754, #83c99b);
+    color: white;
+    padding: 50px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-left h1 {
+    font-size: 34px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.login-left p {
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.login-left ul {
+    list-style: none;
+}
+
+.login-left ul li {
+    margin: 18px 0;
+    font-size: 15px;
+}
+
+.login-left ul li::before {
+    content: "✓";
+    background: white;
+    color: #198754;
+    padding: 4px 7px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* RIGHT SIDE */
+
+.login-right {
+    padding: 50px 40px;
+}
+
+.login-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-heading h2 {
+    color: #198754;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.login-heading p {
+    color: #777;
+    font-size: 14px;
+}
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d6e3d9;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #198754;
+    box-shadow: 0 0 5px rgba(25,135,84,0.2);
+}
+
+/* PASSWORD */
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 75px;
+}
+
+.show-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #198754;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* REMEMBER & FORGOT */
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.form-options a {
+    color: #198754;
+    text-decoration: none;
+}
+
+/* LOGIN BUTTON */
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #198754;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #126b40;
+    transform: translateY(-2px);
+}
+
+/* MESSAGES */
+
+.message {
+    display: none;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.error {
+    background: #ffe1e1;
+    color: #b42318;
+}
+
+.success {
+    background: #d9f5e3;
+    color: #126b40;
+}
+
+/* BOTTOM LINKS */
+
+.signup-text {
+    text-align: center;
+    margin-top: 23px;
+    font-size: 14px;
+    color: #666;
+}
+
+.signup-text a {
+    color: #198754;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.admin-link {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e5eee7;
+}
+
+.admin-link a {
+    color: #198754;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* FOOTER */
+
+footer {
+    background: #153d29;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 750px) {
+
+    .login-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .login-left {
+        padding: 30px;
+    }
+
+    .login-left h1 {
+        font-size: 27px;
+    }
+
+    .login-right {
+        padding: 35px 25px;
+    }
+
+}
+
+@media(max-width: 550px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+
+        <img src="images/logo.jpeg" alt="Vrise Academy Logo">
+
+        <h2>Vrise Academy</h2>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="courses.html">Courses</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- LOGIN SECTION -->
+
+<section class="main-section">
+
+    <div class="login-container">
+
+
+        <!-- LEFT CONTENT -->
+
+        <div class="login-left">
+
+            <h1>Welcome Back!</h1>
+
+            <p>
+                Continue your learning journey with Vrise Academy.
+                Login to access your courses, study materials,
+                class schedule and learning progress.
+            </p>
+
+
+            <ul>
+
+                <li>Access Your Student Dashboard</li>
+
+                <li>Attend Online Classes</li>
+
+            
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- RIGHT LOGIN FORM -->
+
+        <div class="login-right">
+
+
+            <div class="login-heading">
+
+                <h2>Student Login</h2>
+
+                <p>Login to your student account</p>
+
+            </div>
+
+
+            <div id="errorMessage" class="message error"></div>
+
+            <div id="successMessage" class="message success"></div>
+
+
+
+            <form id="loginForm">
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label>Email Address *</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your registered email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label>Password *</label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="togglePassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- OPTIONS -->
+
+                <div class="form-options">
+
+                    <label class="remember">
+
+                        <input type="checkbox" id="rememberMe">
+
+                        Remember Me
+
+                    </label>
+
+
+                    <a href="#" id="forgotPassword">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+
+                <!-- BUTTON -->
+
+                <button type="submit" class="login-btn">
+
+                    Login to Account
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- SIGNUP LINK -->
+
+            <div class="signup-text">
+
+                Don't have an account?
+
+                <a href="signup.html">Create Account</a>
+
+            </div>
+
+
+
+            <!-- ADMIN LOGIN -->
+
+            <div class="admin-link">
+
+                <a href="admin-login.html">
+                    Login as Administrator →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © <span id="year"></span> Vrise Academy.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+
+// CURRENT YEAR
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+// SHOW / HIDE PASSWORD
+
+const passwordInput =
+    document.getElementById("password");
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+
+togglePassword.addEventListener("click", function() {
+
+    if (passwordInput.type === "password") {
+
+        passwordInput.type = "text";
+
+        togglePassword.textContent = "Hide";
+
+    } else {
+
+        passwordInput.type = "password";
+
+        togglePassword.textContent = "Show";
+
+    }
+
+});
+
+
+// LOGIN FORM
+
+const loginForm =
+    document.getElementById("loginForm");
+
+
+loginForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById("email").value.trim().toLowerCase();
+
+    const password =
+        document.getElementById("password").value;
+
+
+    const rememberMe =
+        document.getElementById("rememberMe").checked;
+
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+
+    errorMessage.style.display = "none";
+
+    successMessage.style.display = "none";
+
+
+    // GET REGISTERED STUDENTS
+
+    let students = [];
+
+    try {
+
+        students = JSON.parse(
+            localStorage.getItem("vriseStudents")
+        ) || [];
+
+    } catch (error) {
+
+        showError("Unable to read demo registration data.");
+
+        return;
+
+    }
+
+
+    // FIND STUDENT
+
+    const student = students.find(function(item) {
+
+        return item.email === email &&
+               item.password === password;
+
+    });
+
+
+    // CHECK LOGIN
+
+    if (!student) {
+
+        showError(
+            "Invalid email or password. Please check your details or register first."
+        );
+
+        return;
+
+    }
+
+
+    // SAVE LOGIN SESSION
+
+    const studentSession = {
+
+        id: student.id,
+
+        studentName: student.studentName,
+
+        email: student.email,
+
+        studentClass: student.studentClass
+
+    };
+
+
+    try {
+
+        if (rememberMe) {
+
+            localStorage.setItem(
+                "vriseLoggedInStudent",
+                JSON.stringify(studentSession)
+            );
+
+            sessionStorage.removeItem("vriseLoggedInStudent");
+
+        } else {
+
+            sessionStorage.setItem(
+                "vriseLoggedInStudent",
+                JSON.stringify(studentSession)
+            );
+
+            localStorage.removeItem("vriseLoggedInStudent");
+
+        }
+
+    } catch (error) {
+
+        showError("Unable to create demo login session.");
+
+        return;
+
+    }
+
+
+    // SUCCESS
+
+    successMessage.textContent =
+        "Login successful! Opening your dashboard...";
+
+    successMessage.style.display = "block";
+
+
+    // REDIRECT TO DASHBOARD
+
+    setTimeout(function() {
+
+        window.location.href = "student-dashboard.html";
+
+    }, 1000);
+
+
+});
+
+
+// ERROR FUNCTION
+
+function showError(message) {
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    errorMessage.textContent = message;
+
+    errorMessage.style.display = "block";
+
+}
+
+
+// FORGOT PASSWORD
+
+document.getElementById("forgotPassword").addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+        alert(
+            "Password reset feature will be available after connecting the backend and email verification system."
+        );
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

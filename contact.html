@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us | Vrise Academy</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --green: #16834A;
+    --dark: #14532D;
+    --light: #E8F5E9;
+    --text: #52665A;
+}
+
+body {
+    background: #f8fcf9;
+    color: #243b2d;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* HEADER */
+
+.header {
+    padding: 15px 6%;
+    min-height: 80px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 2px 12px #00000010;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark);
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar a {
+    color: #344d3c;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--green);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 11px 19px;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-btn {
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+.signup-btn {
+    background: var(--green);
+    color: white;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(120deg, #e8f5e9, #c9ebd2);
+    padding: 65px 8%;
+    text-align: center;
+}
+
+.hero h1 {
+    color: var(--dark);
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* CONTACT SECTION */
+
+.contact-section {
+    padding: 65px 8%;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 35px;
+}
+
+/* CONTACT INFO */
+
+.contact-info {
+    background: var(--dark);
+    color: white;
+    padding: 35px;
+    border-radius: 14px;
+}
+
+.contact-info h2 {
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.contact-info > p {
+    color: #d5e8da;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.info-icon {
+    font-size: 25px;
+}
+
+.info-item h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.info-item p {
+    color: #d5e8da;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* CONTACT FORM */
+
+.contact-form {
+    background: white;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px #0000000c;
+}
+
+.contact-form h2 {
+    color: var(--dark);
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.contact-form > p {
+    color: var(--text);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dce9df;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+    background: #fcfffc;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--green);
+}
+
+.form-group textarea {
+    height: 130px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: var(--green);
+    color: white;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: var(--dark);
+}
+
+.success-message {
+    display: none;
+    background: var(--light);
+    color: var(--dark);
+    padding: 15px;
+    border-radius: 7px;
+    margin-top: 18px;
+    line-height: 1.6;
+}
+
+/* FAQ */
+
+.faq-section {
+    padding: 60px 8%;
+    background: var(--light);
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    color: var(--dark);
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px;
+    text-align: left;
+    border: none;
+    background: white;
+    color: var(--dark);
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 18px 18px;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.faq-answer.show {
+    display: block;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #103d27;
+    color: white;
+    padding: 45px 8% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer h3 {
+    margin-bottom: 15px;
+}
+
+.footer p,
+.footer a {
+    color: #d5e8da;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer a {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.copyright {
+    border-top: 1px solid #456b53;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+
+    .header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        gap: 14px;
+    }
+
+    .contact-form,
+    .contact-info {
+        padding: 23px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <a href="index.html" class="logo">
+
+        <img src="images/logo.jpeg" alt="Vrise Logo">
+
+        <span>Vrise Academy</span>
+
+    </a>
+
+    <nav class="navbar">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="courses.html">Courses</a>
+
+        <a href="contact.html" class="active">Contact</a>
+
+    </nav>
+
+    <div class="nav-buttons">
+
+        <a href="login.html" class="btn login-btn">Login</a>
+
+        <a href="signup.html" class="btn signup-btn">Sign Up</a>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Contact Us</h1>
+
+    <p>
+        Have questions about our courses?
+        We are happy to help you.
+        Send us your message.
+    </p>
+
+</section>
+
+
+<!-- CONTACT SECTION -->
+
+<section class="contact-section">
+
+    <div class="contact-grid">
+
+
+        <!-- CONTACT INFORMATION -->
+
+        <div class="contact-info">
+
+            <h2>Get In Touch</h2>
+
+            <p>
+                We would love to hear from you.
+                Contact Vrise Academy for course enquiries,
+                admission information and other questions.
+            </p>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">📍</div>
+
+                <div>
+
+                    <h3>Our Location</h3>
+
+                    <p>Academy address will be updated here.</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">📧</div>
+
+                <div>
+
+                    <h3>Email Address</h3>
+
+                    <p>Academy email will be updated here.</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">📞</div>
+
+                <div>
+
+                    <h3>Phone Number</h3>
+
+                    <p>Academy contact number will be updated here.</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">🕒</div>
+
+                <div>
+
+                    <h3>Working Hours</h3>
+
+                    <p>Monday – Saturday</p>
+
+                    <p>Timing will be updated here.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTACT FORM -->
+
+        <div class="contact-form">
+
+            <h2>Send Us a Message</h2>
+
+            <p>
+                Fill in the details below and submit your enquiry.
+            </p>
+
+
+            <form id="contactForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>Student Name *</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Email Address *</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>Mobile Number *</label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter mobile number"
+                            pattern="[6-9][0-9]{9}"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Select Your Class *</label>
+
+                        <select id="studentClass" required>
+
+                            <option value="">Select Class</option>
+
+                            <option>Class 1</option>
+                            <option>Class 2</option>
+                            <option>Class 3</option>
+                            <option>Class 4</option>
+                            <option>Class 5</option>
+                            <option>Class 6</option>
+                            <option>Class 7</option>
+                            <option>Class 8</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Subject *</label>
+
+                    <select id="subject" required>
+
+                        <option value="">Select Subject</option>
+
+                        <option>Mathematics</option>
+                        <option>English</option>
+                        <option>Science</option>
+                        <option>Computer</option>
+                        <option>General Enquiry</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Your Message *</label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Write your message here..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button type="submit" class="submit-btn">
+
+                    Submit Message
+
+                </button>
+
+
+                <div class="success-message" id="successMessage">
+
+                    Your form has been validated successfully.
+                    This is a demo form; your message has not
+                    been sent to the academy.
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FAQ SECTION -->
+
+<section class="faq-section">
+
+    <div class="section-heading">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <p>Some common questions about Vrise Academy.</p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button class="faq-question">
+
+            Which classes are available?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            Vrise Academy offers learning programs
+            for students from Class 1 to Class 8.
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button class="faq-question">
+
+            How can I register as a student?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            Click on the Sign Up button and complete
+            the student registration form.
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button class="faq-question">
+
+            Will students get study materials?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            Study materials and other learning resources
+            can be provided through the student dashboard
+            once the platform is fully configured.
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <button class="faq-question">
+
+            Can students attend online classes?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            Online class facilities can be provided
+            after the live-class platform is integrated.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>Vrise Academy</h3>
+
+            <p>
+                Making education simple, creative
+                and enjoyable for every student.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html">About</a>
+
+            <a href="courses.html">Courses</a>
+
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div>
+
+            <h3>Student Account</h3>
+
+            <a href="login.html">Student Login</a>
+
+            <a href="signup.html">Sign Up</a>
+
+            <a href="admin-login.html">Admin Login</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © <span id="year"></span> Vrise Academy. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// COPYRIGHT YEAR
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+// CONTACT FORM VALIDATION
+
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (!contactForm.checkValidity()) {
+
+        contactForm.reportValidity();
+
+        return;
+
+    }
+
+    const phone = document.getElementById("phone").value;
+
+    if (!/^[6-9][0-9]{9}$/.test(phone)) {
+
+        alert("Please enter a valid 10-digit mobile number.");
+
+        return;
+
+    }
+
+    document.getElementById("successMessage").style.display =
+        "block";
+
+    contactForm.reset();
+
+});
+
+
+// FAQ ACCORDION
+
+const faqQuestions =
+    document.querySelectorAll(".faq-question");
+
+faqQuestions.forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        const answer = this.nextElementSibling;
+
+        answer.classList.toggle("show");
+
+        const symbol = this.querySelector("span");
+
+        symbol.textContent =
+            answer.classList.contains("show") ? "−" : "+";
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

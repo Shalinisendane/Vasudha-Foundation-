@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Course Details | Vrise Academy</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --green: #16834A;
+    --dark: #14532D;
+    --light: #E8F5E9;
+    --text: #52665A;
+}
+
+body {
+    background: #f8fcf9;
+    color: #243b2d;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* HEADER */
+
+.header {
+    padding: 15px 6%;
+    min-height: 80px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 2px 12px #00000010;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark);
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    color: #344d3c;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.navbar a:hover {
+    color: var(--green);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 11px 19px;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-btn {
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+.signup-btn {
+    background: var(--green);
+    color: white;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(120deg, #e8f5e9, #c9ebd2);
+    padding: 65px 8%;
+    text-align: center;
+}
+
+.hero h1 {
+    color: var(--dark);
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: var(--text);
+    font-size: 16px;
+}
+
+/* MAIN */
+
+.details-container {
+    padding: 60px 8%;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* CONTENT */
+
+.main-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #0000000c;
+}
+
+.class-label {
+    display: inline-block;
+    background: var(--light);
+    color: var(--green);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.main-content h2 {
+    font-size: 29px;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.main-content p {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.content-heading {
+    color: var(--dark);
+    font-size: 23px;
+    margin: 30px 0 15px;
+}
+
+/* OUTCOMES */
+
+.outcome-list {
+    list-style: none;
+}
+
+.outcome-list li {
+    padding: 11px 0;
+    color: var(--text);
+    border-bottom: 1px solid #edf3ee;
+}
+
+.outcome-list li::before {
+    content: "✓";
+    color: var(--green);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* SYLLABUS */
+
+.syllabus-item {
+    border: 1px solid #dce9df;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.syllabus-title {
+    width: 100%;
+    padding: 17px;
+    text-align: left;
+    border: none;
+    background: #f0f8f2;
+    color: var(--dark);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.syllabus-content {
+    display: none;
+    padding: 18px;
+    color: var(--text);
+    line-height: 1.8;
+}
+
+.syllabus-content.show {
+    display: block;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    background: white;
+    padding: 27px;
+    border-radius: 12px;
+    height: fit-content;
+    box-shadow: 0 5px 20px #0000000c;
+}
+
+.sidebar h3 {
+    color: var(--dark);
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.sidebar-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #edf3ee;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.enroll-btn {
+    display: block;
+    margin-top: 25px;
+    padding: 14px;
+    background: var(--green);
+    color: white;
+    border-radius: 7px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.enroll-btn:hover {
+    background: var(--dark);
+}
+
+/* BACK BUTTON */
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: var(--green);
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #103d27;
+    color: white;
+    padding: 45px 8% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer h3 {
+    margin-bottom: 15px;
+}
+
+.footer p,
+.footer a {
+    color: #d5e8da;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer a {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.copyright {
+    border-top: 1px solid #456b53;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+
+    .header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        gap: 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <a href="index.html" class="logo">
+
+        <img src="images/logo.jpeg" alt="Vrise Logo">
+
+        <span>Vrise Academy</span>
+
+    </a>
+
+    <nav class="navbar">
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+    <div class="nav-buttons">
+
+        <a href="login.html" class="btn login-btn">Login</a>
+        <a href="signup.html" class="btn signup-btn">Sign Up</a>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Course Details</h1>
+
+    <p>Explore course information, syllabus and learning outcomes.</p>
+
+</section>
+
+
+<!-- DETAILS -->
+
+<section class="details-container">
+
+    <a href="courses.html" class="back-btn">
+        ← Back to Courses
+    </a>
+
+    <div class="details-grid">
+
+        <!-- MAIN CONTENT -->
+
+        <div class="main-content">
+
+            <span class="class-label" id="classLabel">
+                CLASS 1
+            </span>
+
+            <h2 id="courseTitle">Basic Mathematics</h2>
+
+            <p id="courseDescription">
+                Learn mathematics with simple examples and activities.
+            </p>
+
+
+            <h3 class="content-heading">What You Will Learn</h3>
+
+            <ul class="outcome-list" id="outcomesList">
+
+            </ul>
+
+
+            <h3 class="content-heading">Course Syllabus</h3>
+
+            <div id="syllabusContainer">
+
+            </div>
+
+        </div>
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <h3>Course Information</h3>
+
+            <div class="sidebar-item">
+                🎓 <strong>Class:</strong>
+                <span id="sidebarClass">Class 1</span>
+            </div>
+
+            <div class="sidebar-item">
+                📚 <strong>Subject:</strong>
+                <span id="sidebarSubject">Mathematics</span>
+            </div>
+
+            <div class="sidebar-item">
+                📖 <strong>Level:</strong>
+                <span id="sidebarLevel">Beginner</span>
+            </div>
+
+            <div class="sidebar-item">
+                💻 <strong>Learning:</strong>
+                Online Learning
+            </div>
+
+            <div class="sidebar-item">
+                📝 <strong>Resources:</strong>
+                Study Materials
+            </div>
+
+            <a href="signup.html" class="enroll-btn">
+                Enroll Now
+            </a>
+
+            <a href="login.html" class="enroll-btn">
+                Student Login
+            </a>
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>Vrise Academy</h3>
+
+            <p>
+                Making education simple, creative
+                and enjoyable for every student.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div>
+
+            <h3>Account</h3>
+
+            <a href="login.html">Student Login</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="admin-login.html">Admin Login</a>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+
+        © <span id="year"></span> Vrise Academy. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<script>
+
+// COURSE DATA
+
+const courseData = {
+
+    "1-mathematics": {
+
+        title: "Basic Mathematics",
+
+        subject: "Mathematics",
+
+        level: "Beginner",
+
+        description:
+        "Learn numbers, counting, addition, subtraction and basic mathematical concepts through simple examples and activities.",
+
+        outcomes: [
+            "Understand numbers and counting.",
+            "Learn addition and subtraction.",
+            "Recognize basic shapes.",
+            "Understand simple mathematical patterns."
+        ],
+
+        syllabus: [
+            ["Chapter 1: Numbers",
+            "Introduction to numbers, counting and number names."],
+
+            ["Chapter 2: Addition",
+            "Basic addition using objects and examples."],
+
+            ["Chapter 3: Subtraction",
+            "Simple subtraction and practice questions."],
+
+            ["Chapter 4: Shapes",
+            "Introduction to circles, squares, triangles and rectangles."]
+        ]
+
+    },
+
+
+    "2-english": {
+
+        title: "English Grammar",
+
+        subject: "English",
+
+        level: "Beginner",
+
+        description:
+        "Improve English vocabulary, reading, sentence formation and basic grammar.",
+
+        outcomes: [
+            "Learn basic English words.",
+            "Understand nouns and pronouns.",
+            "Build simple sentences.",
+            "Improve reading skills."
+        ],
+
+        syllabus: [
+            ["Chapter 1: Alphabet and Words",
+            "English alphabet and basic vocabulary."],
+
+            ["Chapter 2: Nouns",
+            "Introduction to naming words."],
+
+            ["Chapter 3: Pronouns",
+            "Understanding pronouns with examples."],
+
+            ["Chapter 4: Sentences",
+            "Making simple English sentences."]
+        ]
+
+    },
+
+
+    "3-mathematics": {
+
+        title: "Mathematics",
+
+        subject: "Mathematics",
+
+        level: "Intermediate",
+
+        description:
+        "Develop mathematical skills through multiplication, division, fractions and problem solving.",
+
+        outcomes: [
+            "Understand multiplication.",
+            "Learn division methods.",
+            "Understand basic fractions.",
+            "Solve mathematical problems."
+        ],
+
+        syllabus: [
+            ["Chapter 1: Multiplication",
+            "Multiplication tables and problems."],
+
+            ["Chapter 2: Division",
+            "Basic division methods."],
+
+            ["Chapter 3: Fractions",
+            "Introduction to fractions."],
+
+            ["Chapter 4: Geometry",
+            "Basic geometric shapes."]
+        ]
+
+    },
+
+
+    "4-science": {
+
+        title: "General Science",
+
+        subject: "Science",
+
+        level: "Beginner",
+
+        description:
+        "Discover plants, animals, human body, environment and the world around us.",
+
+        outcomes: [
+            "Understand living and non-living things.",
+            "Learn about plants and animals.",
+            "Understand the human body.",
+            "Develop scientific curiosity."
+        ],
+
+        syllabus: [
+            ["Chapter 1: Plants",
+            "Parts of plants and their functions."],
+
+            ["Chapter 2: Animals",
+            "Types of animals and their habitats."],
+
+            ["Chapter 3: Human Body",
+            "Basic body parts and their functions."],
+
+            ["Chapter 4: Environment",
+            "Our environment and its protection."]
+        ]
+
+    },
+
+
+    "5-english": {
+
+        title: "English Learning",
+
+        subject: "English",
+
+        level: "Intermediate",
+
+        description:
+        "Develop reading, writing, vocabulary, grammar and communication skills.",
+
+        outcomes: [
+            "Improve English reading.",
+            "Understand grammar rules.",
+            "Develop vocabulary.",
+            "Write simple paragraphs."
+        ],
+
+        syllabus: [
+            ["Chapter 1: Parts of Speech",
+            "Introduction to different parts of speech."],
+
+            ["Chapter 2: Tenses",
+            "Basic present, past and future tense."],
+
+            ["Chapter 3: Vocabulary",
+            "Synonyms, antonyms and new words."],
+
+            ["Chapter 4: Writing",
+            "Paragraph and letter writing."]
+        ]
+
+    },
+
+
+    "6-computer": {
+
+        title: "Computer Fundamentals",
+
+        subject: "Computer",
+
+        level: "Beginner",
+
+        description:
+        "Understand computers, their components, basic applications and digital skills.",
+
+        outcomes: [
+            "Understand computer basics.",
+            "Identify computer components.",
+            "Learn keyboard and mouse operations.",
+            "Understand basic software."
+        ],
+
+        syllabus: [
+            ["Chapter 1: Introduction to Computers",
+            "What is a computer and its uses."],
+
+            ["Chapter 2: Computer Parts",
+            "Monitor, CPU, keyboard and mouse."],
+
+            ["Chapter 3: Input and Output Devices",
+            "Understanding different devices."],
+
+            ["Chapter 4: Software",
+            "Introduction to basic computer software."]
+        ]
+
+    },
+
+
+    "7-mathematics": {
+
+        title: "Advanced Mathematics",
+
+        subject: "Mathematics",
+
+        level: "Advanced",
+
+        description:
+        "Learn algebra, geometry, integers and advanced mathematical concepts.",
+
+        outcomes: [
+            "Understand integers.",
+            "Learn algebraic expressions.",
+            "Understand geometry.",
+            "Solve mathematical equations."
+        ],
+
+        syllabus: [
+            ["Chapter 1: Integers",
+            "Positive and negative integers."],
+
+            ["Chapter 2: Fractions",
+            "Operations on fractions."],
+
+            ["Chapter 3: Algebra",
+            "Introduction to algebraic expressions."],
+
+            ["Chapter 4: Geometry",
+            "Lines, angles and shapes."]
+        ]
+
+    },
+
+
+    "8-science": {
+
+        title: "Science Learning",
+
+        subject: "Science",
+
+        level: "Advanced",
+
+        description:
+        "Explore physics, chemistry, biology and important scientific concepts.",
+
+        outcomes: [
+            "Understand basic scientific principles.",
+            "Learn about force and motion.",
+            "Understand matter and materials.",
+            "Explore living organisms."
+        ],
+
+        syllabus: [
+            ["Chapter 1: Force and Pressure",
+            "Basic concepts of force and pressure."],
+
+            ["Chapter 2: Matter",
+            "Introduction to matter and materials."],
+
+            ["Chapter 3: Living Organisms",
+            "Understanding cells and organisms."],
+
+            ["Chapter 4: Light",
+            "Basic concepts of light."]
+        ]
+
+    }
+
+};
+
+
+// GET URL PARAMETERS
+
+const params = new URLSearchParams(window.location.search);
+
+const classNumber = params.get("class");
+
+const subject = params.get("subject");
+
+const courseKey = `${classNumber}-${subject}`;
+
+const course = courseData[courseKey];
+
+
+// DISPLAY COURSE
+
+if (course) {
+
+    document.title = course.title + " | Vrise Academy";
+
+    document.getElementById("courseTitle").textContent =
+        course.title;
+
+    document.getElementById("courseDescription").textContent =
+        course.description;
+
+    document.getElementById("classLabel").textContent =
+        "CLASS " + classNumber;
+
+    document.getElementById("sidebarClass").textContent =
+        "Class " + classNumber;
+
+    document.getElementById("sidebarSubject").textContent =
+        course.subject;
+
+    document.getElementById("sidebarLevel").textContent =
+        course.level;
+
+
+    // OUTCOMES
+
+    const outcomesList =
+        document.getElementById("outcomesList");
+
+    course.outcomes.forEach(item => {
+
+        const li = document.createElement("li");
+
+        li.textContent = item;
+
+        outcomesList.appendChild(li);
+
+    });
+
+
+    // SYLLABUS
+
+    const syllabusContainer =
+        document.getElementById("syllabusContainer");
+
+    course.syllabus.forEach((item, index) => {
+
+        const box = document.createElement("div");
+
+        box.className = "syllabus-item";
+
+        const button = document.createElement("button");
+
+        button.className = "syllabus-title";
+
+        button.innerHTML =
+            item[0] + "<span>+</span>";
+
+        const content = document.createElement("div");
+
+        content.className = "syllabus-content";
+
+        content.textContent = item[1];
+
+        button.addEventListener("click", function() {
+
+            content.classList.toggle("show");
+
+            const symbol = button.querySelector("span");
+
+            symbol.textContent =
+                content.classList.contains("show") ? "−" : "+";
+
+        });
+
+        box.appendChild(button);
+
+        box.appendChild(content);
+
+        syllabusContainer.appendChild(box);
+
+    });
+
+} else {
+
+    document.getElementById("courseTitle").textContent =
+        "Course Not Found";
+
+    document.getElementById("courseDescription").textContent =
+        "Please go back to the courses page and select a valid course.";
+
+    document.getElementById("classLabel").textContent =
+        "Course Information Unavailable";
+
+    document.querySelector(".sidebar").style.display = "none";
+
+}
+
+
+// COPYRIGHT YEAR
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+
+</html>

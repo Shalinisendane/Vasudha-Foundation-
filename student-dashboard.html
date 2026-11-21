@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Dashboard | Vrise Academy</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f8f5;
+    color: #26382c;
+}
+
+/* HEADER */
+
+header {
+    background: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo h2 {
+    color: #198754;
+    font-size: 22px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.student-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background: #198754;
+    color: white;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #126b40;
+}
+
+/* MAIN LAYOUT */
+
+.dashboard-container {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 245px;
+    background: #164d32;
+    padding: 25px 15px;
+    flex-shrink: 0;
+}
+
+.sidebar h3 {
+    color: #b7e5c7;
+    font-size: 13px;
+    margin: 10px 12px 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 13px 15px;
+    margin: 5px 0;
+    border-radius: 7px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #2b8555;
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    min-width: 0;
+}
+
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+/* PAGE HEADING */
+
+.page-heading {
+    margin-bottom: 25px;
+}
+
+.page-heading h1 {
+    color: #198754;
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.page-heading p {
+    color: #777;
+    font-size: 14px;
+}
+
+/* WELCOME */
+
+.welcome-box {
+    background: linear-gradient(120deg, #198754, #76bd8f);
+    padding: 30px;
+    border-radius: 12px;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.welcome-box h1 {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.welcome-box p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* STATISTICS */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+    border-left: 4px solid #198754;
+}
+
+.stat-card h3 {
+    font-size: 25px;
+    color: #198754;
+    margin-bottom: 8px;
+}
+
+.stat-card p {
+    color: #777;
+    font-size: 13px;
+}
+
+/* GENERAL CARDS */
+
+.content-card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.content-card h2 {
+    font-size: 19px;
+    margin-bottom: 18px;
+    color: #198754;
+}
+
+/* COURSE CARDS */
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.course-card {
+    border: 1px solid #e1eee4;
+    padding: 20px;
+    border-radius: 9px;
+}
+
+.course-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.course-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.course-card p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.progress-bar {
+    height: 9px;
+    background: #e6eee8;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #198754;
+    border-radius: 10px;
+}
+
+.small-text {
+    font-size: 12px;
+    color: #777;
+}
+
+/* BUTTONS */
+
+.action-btn {
+    display: inline-block;
+    background: #198754;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.action-btn:hover {
+    background: #126b40;
+}
+
+/* TABLE */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
+}
+
+th, td {
+    text-align: left;
+    padding: 14px;
+    border-bottom: 1px solid #e8eee9;
+    font-size: 13px;
+}
+
+th {
+    background: #eaf6ed;
+    color: #198754;
+}
+
+.status {
+    background: #d9f5e3;
+    color: #126b40;
+    padding: 5px 9px;
+    border-radius: 15px;
+    font-size: 11px;
+}
+
+/* PROFILE */
+
+.profile-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.profile-item {
+    background: #f5faf6;
+    padding: 15px;
+    border-radius: 7px;
+}
+
+.profile-item label {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 7px;
+}
+
+.profile-item p {
+    font-size: 14px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+/* CALENDAR */
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background: #198754;
+    color: white;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 7px;
+}
+
+.calendar-day {
+    background: #f2f8f3;
+    padding: 13px 5px;
+    text-align: center;
+    border-radius: 5px;
+    min-height: 55px;
+    font-size: 13px;
+}
+
+.calendar-day.heading {
+    background: #198754;
+    color: white;
+    font-weight: bold;
+    min-height: auto;
+}
+
+.calendar-day.today {
+    border: 2px solid #198754;
+    font-weight: bold;
+}
+
+.calendar-day.has-class {
+    background: #d9f5e3;
+    color: #126b40;
+    font-weight: bold;
+}
+
+/* MATERIALS */
+
+.material-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    border-bottom: 1px solid #e8eee9;
+}
+
+.material-item h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.material-item p {
+    font-size: 12px;
+    color: #777;
+}
+
+/* PROGRESS */
+
+.progress-subject {
+    margin-bottom: 22px;
+}
+
+.progress-subject h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.progress-subject .progress-bar {
+    height: 12px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #153d29;
+    color: white;
+    text-align: center;
+    padding: 17px;
+    font-size: 12px;
+}
+
+/* MOBILE MENU */
+
+.menu-btn {
+    display: none;
+    background: #198754;
+    color: white;
+    border: none;
+    padding: 9px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1000px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 750px) {
+
+    header {
+        padding: 12px 15px;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .dashboard-container {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+        width: 100%;
+    }
+
+    .sidebar.show {
+        display: block;
+    }
+
+    .main-content {
+        padding: 20px 15px;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-box {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .welcome-box {
+        padding: 22px;
+    }
+
+    .welcome-box h1 {
+        font-size: 22px;
+    }
+
+    .student-name {
+        display: none;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
+
+    .logout-btn {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+
+    .calendar-grid {
+        gap: 3px;
+    }
+
+    .calendar-day {
+        padding: 9px 2px;
+        font-size: 11px;
+        min-height: 42px;
+    }
+
+    .material-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+
+        <img src="images/logo.jpeg" alt="Vrise Academy Logo">
+
+        <h2>Vrise Academy</h2>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰ Menu
+        </button>
+
+        <span class="student-name" id="headerStudentName">
+            Student
+        </span>
+
+        <button class="logout-btn" onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<div class="dashboard-container">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+    <h3>Student Menu</h3>
+
+    <a href="#" class="active" onclick="showSection('home', this)">
+        🏠 Dashboard Home
+    </a>
+
+    <a href="#" onclick="showSection('profile', this)">
+        👤 My Profile
+    </a>
+
+    <a href="#" onclick="showSection('courses', this)">
+        📚 My Courses
+    </a>
+
+    <a href="#" onclick="showSection('live', this)">
+        🎥 Live Classes
+    </a>
+
+    <a href="#" onclick="showSection('calendar', this)">
+        📅 Class Calendar
+    </a>
+
+    <a href="#" onclick="showSection('recorded', this)">
+        ▶ Recorded Lectures
+    </a>
+
+    <a href="#" onclick="showSection('materials', this)">
+        📄 Study Materials
+    </a>
+
+    <a href="#" onclick="showSection('progress', this)">
+        📊 My Progress
+    </a>
+
+</aside>
+
+
+
+<!-- MAIN CONTENT -->
+
+<main class="main-content">
+
+
+
+<!-- DASHBOARD HOME -->
+
+<section class="page-section active" id="home">
+
+    <div class="welcome-box">
+
+        <h1>
+            Welcome, <span id="welcomeName">Student</span>!
+        </h1>
+
+        <p>
+            Welcome to your Vrise Academy Student Dashboard.
+            Keep learning, stay curious and achieve your goals.
+        </p>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <h3>03</h3>
+
+            <p>My Courses</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>05</h3>
+
+            <p>Upcoming Classes</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>12</h3>
+
+            <p>Recorded Lectures</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>65%</h3>
+
+            <p>Learning Progress</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <h2>My Learning Courses</h2>
+
+        <div class="course-grid">
+
+            <div class="course-card">
+
+                <div class="course-icon">📘</div>
+
+                <h3>Mathematics</h3>
+
+                <p>Learn numbers, calculations and problem solving.</p>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill" style="width:70%"></div>
+
+                </div>
+
+                <span class="small-text">70% Completed</span>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">📗</div>
+
+                <h3>English</h3>
+
+                <p>Improve grammar, reading and communication.</p>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill" style="width:55%"></div>
+
+                </div>
+
+                <span class="small-text">55% Completed</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <h2>Upcoming Classes</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>Monday</td>
+                        <td>10:00 AM</td>
+                        <td><span class="status">Scheduled</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>English</td>
+                        <td>Tuesday</td>
+                        <td>11:00 AM</td>
+                        <td><span class="status">Scheduled</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Science</td>
+                        <td>Wednesday</td>
+                        <td>12:00 PM</td>
+                        <td><span class="status">Scheduled</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PROFILE -->
+
+<section class="page-section" id="profile">
+
+    <div class="page-heading">
+
+        <h1>My Profile</h1>
+
+        <p>View your registered student information.</p>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <h2>Personal Information</h2>
+
+        <div class="profile-box">
+
+            <div class="profile-item">
+                <label>Student Name</label>
+                <p id="profileName">-</p>
+            </div>
+
+            <div class="profile-item">
+                <label>Parent / Guardian Name</label>
+                <p id="profileParent">-</p>
+            </div>
+
+            <div class="profile-item">
+                <label>Email Address</label>
+                <p id="profileEmail">-</p>
+            </div>
+
+            <div class="profile-item">
+                <label>Mobile Number</label>
+                <p id="profileMobile">-</p>
+            </div>
+
+            <div class="profile-item">
+                <label>Date of Birth</label>
+                <p id="profileDOB">-</p>
+            </div>
+
+            <div class="profile-item">
+                <label>Gender</label>
+                <p id="profileGender">-</p>
+            </div>
+
+            <div class="profile-item">
+                <label>Class</label>
+                <p id="profileClass">-</p>
+            </div>
+
+            <div class="profile-item">
+                <label>Student ID</label>
+                <p id="profileID">-</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MY COURSES -->
+
+<section class="page-section" id="courses">
+
+    <div class="page-heading">
+
+        <h1>My Courses</h1>
+
+        <p>Explore your learning subjects.</p>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <div class="course-grid">
+
+            <div class="course-card">
+
+                <div class="course-icon">📘</div>
+
+                <h3>Mathematics</h3>
+
+                <p>Basic calculations, numbers and formulas.</p>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width:70%"></div>
+                </div>
+
+                <span class="small-text">70% Completed</span>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">📗</div>
+
+                <h3>English</h3>
+
+                <p>Grammar, vocabulary and reading skills.</p>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width:55%"></div>
+                </div>
+
+                <span class="small-text">55% Completed</span>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">🔬</div>
+
+                <h3>Science</h3>
+
+                <p>Understand the world through science.</p>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width:40%"></div>
+                </div>
+
+                <span class="small-text">40% Completed</span>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">💻</div>
+
+                <h3>Computer</h3>
+
+                <p>Learn computer basics and technology.</p>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width:30%"></div>
+                </div>
+
+                <span class="small-text">30% Completed</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- LIVE CLASSES -->
+
+<section class="page-section" id="live">
+
+    <div class="page-heading">
+
+        <h1>Live Classes</h1>
+
+        <p>Check your upcoming online classes.</p>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <h2>Upcoming Live Sessions</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Subject</th>
+                        <th>Teacher</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>Teacher 1</td>
+                        <td>Monday</td>
+                        <td>10:00 AM</td>
+                        <td>
+                            <button class="action-btn" onclick="showDemoMessage()">
+                                Join Class
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>English</td>
+                        <td>Teacher 2</td>
+                        <td>Tuesday</td>
+                        <td>11:00 AM</td>
+                        <td>
+                            <button class="action-btn" onclick="showDemoMessage()">
+                                Join Class
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Science</td>
+                        <td>Teacher 3</td>
+                        <td>Wednesday</td>
+                        <td>12:00 PM</td>
+                        <td>
+                            <button class="action-btn" onclick="showDemoMessage()">
+                                Join Class
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CALENDAR -->
+
+<section class="page-section" id="calendar">
+
+    <div class="page-heading">
+
+        <h1>Class Calendar</h1>
+
+        <p>Check your monthly class schedule.</p>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <div class="calendar-header">
+
+            <button onclick="changeMonth(-1)">❮ Previous</button>
+
+            <h2 id="calendarMonth"></h2>
+
+            <button onclick="changeMonth(1)">Next ❯</button>
+
+        </div>
+
+
+        <div class="calendar-grid" id="calendarGrid"></div>
+
+
+        <p class="small-text" style="margin-top:15px;">
+            🟢 Green dates indicate sample class days.
+            Actual class dates will be added by the academy.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- RECORDED LECTURES -->
+
+<section class="page-section" id="recorded">
+
+    <div class="page-heading">
+
+        <h1>Recorded Lectures</h1>
+
+        <p>Watch your previously recorded classes.</p>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <h2>Available Lectures</h2>
+
+
+        <div class="material-item">
+
+            <div>
+                <h3>Mathematics - Number System</h3>
+                <p>Duration: 30 Minutes</p>
+            </div>
+
+            <button class="action-btn" onclick="showDemoMessage()">
+                Watch Lecture
+            </button>
+
+        </div>
+
+
+        <div class="material-item">
+
+            <div>
+                <h3>English - Parts of Speech</h3>
+                <p>Duration: 25 Minutes</p>
+            </div>
+
+            <button class="action-btn" onclick="showDemoMessage()">
+                Watch Lecture
+            </button>
+
+        </div>
+
+
+        <div class="material-item">
+
+            <div>
+                <h3>Science - Our Environment</h3>
+                <p>Duration: 35 Minutes</p>
+            </div>
+
+            <button class="action-btn" onclick="showDemoMessage()">
+                Watch Lecture
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- STUDY MATERIALS -->
+
+<section class="page-section" id="materials">
+
+    <div class="page-heading">
+
+        <h1>Study Materials</h1>
+
+        <p>Access notes, worksheets and learning resources.</p>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <h2>Available Study Resources</h2>
+
+
+        <div class="material-item">
+
+            <div>
+                <h3>📄 Mathematics Worksheet</h3>
+                <p>Practice questions for students.</p>
+            </div>
+
+            <button class="action-btn" onclick="showDemoMessage()">
+                Download PDF
+            </button>
+
+        </div>
+
+
+        <div class="material-item">
+
+            <div>
+                <h3>📄 English Grammar Notes</h3>
+                <p>Grammar rules and examples.</p>
+            </div>
+
+            <button class="action-btn" onclick="showDemoMessage()">
+                Download PDF
+            </button>
+
+        </div>
+
+
+        <div class="material-item">
+
+            <div>
+                <h3>📄 Science Study Notes</h3>
+                <p>Important science topics.</p>
+            </div>
+
+            <button class="action-btn" onclick="showDemoMessage()">
+                Download PDF
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MY PROGRESS -->
+
+<section class="page-section" id="progress">
+
+    <div class="page-heading">
+
+        <h1>My Learning Progress</h1>
+
+        <p>Track your course completion.</p>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <h2>Subject-wise Progress</h2>
+
+
+        <div class="progress-subject">
+
+            <h3>Mathematics - 70%</h3>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:70%"></div>
+            </div>
+
+        </div>
+
+
+        <div class="progress-subject">
+
+            <h3>English - 55%</h3>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:55%"></div>
+            </div>
+
+        </div>
+
+
+        <div class="progress-subject">
+
+            <h3>Science - 40%</h3>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:40%"></div>
+            </div>
+
+        </div>
+
+
+        <div class="progress-subject">
+
+            <h3>Computer - 30%</h3>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:30%"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © <span id="year"></span> Vrise Academy. All Rights Reserved.
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+
+// CHECK STUDENT LOGIN
+
+let student = null;
+
+try {
+
+    student = JSON.parse(
+        sessionStorage.getItem("vriseLoggedInStudent")
+    ) || JSON.parse(
+        localStorage.getItem("vriseLoggedInStudent")
+    );
+
+} catch(error) {
+
+    student = null;
+
+}
+
+
+if (!student) {
+
+    alert("Please login first to access your dashboard.");
+
+    window.location.href = "login.html";
+
+} else {
+
+    // SHOW STUDENT NAME
+
+    document.getElementById("welcomeName").textContent =
+        student.studentName;
+
+    document.getElementById("headerStudentName").textContent =
+        student.studentName;
+
+
+    // LOAD STUDENT PROFILE
+
+    let students = [];
+
+    try {
+
+        students = JSON.parse(
+            localStorage.getItem("vriseStudents")
+        ) || [];
+
+    } catch(error) {
+
+        students = [];
+
+    }
+
+
+    const fullStudent = students.find(function(item) {
+
+        return item.id === student.id;
+
+    });
+
+
+    if (fullStudent) {
+
+        document.getElementById("profileName").textContent =
+            fullStudent.studentName;
+
+        document.getElementById("profileParent").textContent =
+            fullStudent.parentName;
+
+        document.getElementById("profileEmail").textContent =
+            fullStudent.email;
+
+        document.getElementById("profileMobile").textContent =
+            fullStudent.mobile;
+
+        document.getElementById("profileDOB").textContent =
+            fullStudent.dob;
+
+        document.getElementById("profileGender").textContent =
+            fullStudent.gender;
+
+        document.getElementById("profileClass").textContent =
+            fullStudent.studentClass;
+
+        document.getElementById("profileID").textContent =
+            fullStudent.id;
+
+    }
+
+}
+
+
+// CURRENT YEAR
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+// SIDEBAR MENU
+
+function showSection(sectionId, clickedLink) {
+
+    const sections =
+        document.querySelectorAll(".page-section");
+
+    sections.forEach(function(section) {
+
+        section.classList.remove("active");
+
+    });
+
+
+    const selectedSection =
+        document.getElementById(sectionId);
+
+    if (selectedSection) {
+
+        selectedSection.classList.add("active");
+
+    }
+
+
+    const links =
+        document.querySelectorAll(".sidebar a");
+
+    links.forEach(function(link) {
+
+        link.classList.remove("active");
+
+    });
+
+
+    if (clickedLink) {
+
+        clickedLink.classList.add("active");
+
+    }
+
+
+    document.getElementById("sidebar").classList.remove("show");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+// MOBILE MENU
+
+function toggleMenu() {
+
+    document.getElementById("sidebar").classList.toggle("show");
+
+}
+
+
+// DEMO BUTTON MESSAGE
+
+function showDemoMessage() {
+
+    alert(
+        "This feature will work after adding actual class links, lecture videos or PDF files."
+    );
+
+}
+
+
+// LOGOUT
+
+function logout() {
+
+    const confirmLogout = confirm(
+        "Are you sure you want to logout?"
+    );
+
+    if (confirmLogout) {
+
+        localStorage.removeItem("vriseLoggedInStudent");
+
+        sessionStorage.removeItem("vriseLoggedInStudent");
+
+        window.location.href = "login.html";
+
+    }
+
+}
+
+
+// CALENDAR
+
+let calendarDate = new Date();
+
+function renderCalendar() {
+
+    const year = calendarDate.getFullYear();
+
+    const month = calendarDate.getMonth();
+
+    const firstDay = new Date(year, month, 1).getDay();
+
+    const totalDays = new Date(year, month + 1, 0).getDate();
+
+    const today = new Date();
+
+    document.getElementById("calendarMonth").textContent =
+        calendarDate.toLocaleString("default", {
+            month: "long",
+            year: "numeric"
+        });
+
+
+    const grid = document.getElementById("calendarGrid");
+
+    grid.innerHTML = "";
+
+
+    const dayNames = [
+        "Sun", "Mon", "Tue", "Wed",
+        "Thu", "Fri", "Sat"
+    ];
+
+
+    dayNames.forEach(function(day) {
+
+        const dayElement = document.createElement("div");
+
+        dayElement.className = "calendar-day heading";
+
+        dayElement.textContent = day;
+
+        grid.appendChild(dayElement);
+
+    });
+
+
+    for (let i = 0; i < firstDay; i++) {
+
+        const blank = document.createElement("div");
+
+        blank.className = "calendar-day";
+
+        grid.appendChild(blank);
+
+    }
+
+
+    for (let day = 1; day <= totalDays; day++) {
+
+        const dateElement = document.createElement("div");
+
+        dateElement.className = "calendar-day";
+
+        dateElement.textContent = day;
+
+
+        if (
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+        ) {
+
+            dateElement.classList.add("today");
+
+        }
+
+
+        // Sample class dates: Every Tuesday and Thursday
+
+        const weekday = new Date(year, month, day).getDay();
+
+        if (weekday === 2 || weekday === 4) {
+
+            dateElement.classList.add("has-class");
+
+            dateElement.title = "Sample class day";
+
+        }
+
+
+        grid.appendChild(dateElement);
+
+    }
+
+}
+
+
+function changeMonth(direction) {
+
+    calendarDate.setMonth(
+        calendarDate.getMonth() + direction
+    );
+
+    renderCalendar();
+
+}
+
+
+renderCalendar();
+
+
+</script>
+
+
+</body>
+
+</html>

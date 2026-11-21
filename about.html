@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Vrise Academy</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --green: #16834A;
+    --dark: #14532D;
+    --light: #E8F5E9;
+    --text: #52665A;
+}
+
+body {
+    background: #f8fcf9;
+    color: #243b2d;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* HEADER */
+
+.header {
+    width: 100%;
+    padding: 15px 6%;
+    min-height: 80px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 2px 12px #00000010;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark);
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar a {
+    color: #344d3c;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--green);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 11px 19px;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.login-btn {
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+.signup-btn {
+    background: var(--green);
+    color: white;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(120deg, #e8f5e9, #c9ebd2);
+    text-align: center;
+    padding: 75px 8%;
+}
+
+.hero h1 {
+    font-size: 42px;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.8;
+    color: var(--text);
+    font-size: 17px;
+}
+
+/* ABOUT */
+
+.about-section {
+    padding: 70px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.about-content h2 {
+    color: var(--dark);
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+/* MISSION VISION */
+
+.mv-section {
+    padding: 60px 8%;
+    background: var(--light);
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    color: var(--dark);
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: var(--text);
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.mv-card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.mv-card h3 {
+    color: var(--green);
+    margin-bottom: 15px;
+    font-size: 23px;
+}
+
+.mv-card p {
+    color: var(--text);
+    line-height: 1.8;
+}
+
+/* CLASSES */
+
+.classes-section {
+    padding: 65px 8%;
+}
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.class-card {
+    background: white;
+    border: 1px solid #dce9df;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.class-card:hover {
+    background: var(--light);
+    transform: translateY(-5px);
+}
+
+.class-card h3 {
+    color: var(--green);
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.class-card p {
+    color: var(--text);
+    font-size: 14px;
+}
+
+/* TEACHING */
+
+.teaching-section {
+    background: #f0f8f2;
+    padding: 65px 8%;
+}
+
+.teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.teaching-card {
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.teaching-card .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.teaching-card h3 {
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.teaching-card p {
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* CTA */
+
+.cta {
+    margin: 60px 8%;
+    background: var(--dark);
+    color: white;
+    padding: 50px 25px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.cta h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    margin-bottom: 25px;
+}
+
+.cta a {
+    background: white;
+    color: var(--dark);
+    padding: 13px 25px;
+    border-radius: 7px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #103d27;
+    color: white;
+    padding: 45px 8% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer h3 {
+    margin-bottom: 15px;
+}
+
+.footer p,
+.footer a {
+    color: #d5e8da;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer a {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.copyright {
+    border-top: 1px solid #456b53;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+
+    .header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .about-section {
+        grid-template-columns: 1fr;
+    }
+
+    .class-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .mv-grid,
+    .teaching-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .class-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .navbar {
+        gap: 14px;
+    }
+
+    .navbar a {
+        font-size: 13px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <a href="index.html" class="logo">
+        <img src="images/logo.jpeg" alt="Vrise Logo">
+        <span>Vrise Academy</span>
+    </a>
+
+    <nav class="navbar">
+
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+    <div class="nav-buttons">
+
+        <a href="login.html" class="btn login-btn">Login</a>
+        <a href="signup.html" class="btn signup-btn">Sign Up</a>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>About Vrise Academy</h1>
+
+    <p>
+        We believe every child deserves quality education.
+        Our mission is to make learning simple, interesting,
+        interactive and enjoyable for students from Class 1 to Class 8.
+    </p>
+
+</section>
+
+
+<!-- ABOUT SECTION -->
+
+<section class="about-section">
+
+    <div class="about-image">
+
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7"
+             alt="Students learning">
+
+    </div>
+
+    <div class="about-content">
+
+        <h2>Who We Are</h2>
+
+        <p>
+            Vrise Academy is an educational learning platform
+            designed for school students from Classes 1 to 8.
+        </p>
+
+        <p>
+            We aim to provide a friendly and supportive learning
+            environment where students can understand concepts,
+            improve their skills and develop confidence.
+        </p>
+
+        <p>
+            Our learning approach combines classroom-style teaching,
+            digital learning resources, practice activities and
+            interactive educational sessions.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- MISSION AND VISION -->
+
+<section class="mv-section">
+
+    <div class="section-heading">
+
+        <h2>Our Mission & Vision</h2>
+
+        <p>Building a better learning experience for every child.</p>
+
+    </div>
+
+    <div class="mv-grid">
+
+        <div class="mv-card">
+
+            <h3>🎯 Our Mission</h3>
+
+            <p>
+                To provide accessible, understandable and engaging
+                education that helps every student learn with confidence.
+            </p>
+
+        </div>
+
+        <div class="mv-card">
+
+            <h3>🌟 Our Vision</h3>
+
+            <p>
+                To create a learning environment where students
+                develop knowledge, creativity, problem-solving
+                abilities and a love for learning.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CLASSES -->
+
+<section class="classes-section">
+
+    <div class="section-heading">
+
+        <h2>Classes We Cover</h2>
+
+        <p>Learning programs for students from Class 1 to Class 8.</p>
+
+    </div>
+
+    <div class="class-grid">
+
+        <div class="class-card">
+            <h3>Grade 1st-8th</h3>
+            <p>Scratch coding</p>
+        </div>
+
+        <div class="class-card">
+            <h3>Grade 1st-8th</h3>
+            <p>Finance</p>
+        </div>
+
+        <div class="class-card">
+            <h3>Grade 1st-8th</h3>
+            <p>Perosnality Development</p>
+        </div>
+
+        
+
+</section>
+
+
+<!-- TEACHING APPROACH -->
+
+<section class="teaching-section">
+
+    <div class="section-heading">
+
+        <h2>Our Teaching Approach</h2>
+
+        <p>Making education more effective and interesting.</p>
+
+    </div>
+
+    <div class="teaching-grid">
+
+        <div class="teaching-card">
+
+            <div class="icon">👩‍🏫</div>
+
+            <h3>Expert Guidance</h3>
+
+            <p>
+                Supportive teaching methods to help students
+                understand difficult topics.
+            </p>
+
+        </div>
+
+        <div class="teaching-card">
+
+            <div class="icon">💻</div>
+
+            <h3>Digital Learning</h3>
+
+            <p>
+                Digital resources and learning materials
+                for better understanding.
+            </p>
+
+        </div>
+
+        <div class="teaching-card">
+
+            <div class="icon">📚</div>
+
+            <h3>Practice & Revision</h3>
+
+            <p>
+                Regular practice and revision to strengthen
+                students' knowledge.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <h2>Start Learning With Vrise Academy</h2>
+
+    <p>
+        Give your child an opportunity to learn, grow and shine.
+    </p>
+
+    <a href="signup.html">Join Our Academy</a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>Vrise Academy</h3>
+
+            <p>
+                Helping students learn better and build
+                a brighter future through quality education.
+            </p>
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div>
+
+            <h3>Account</h3>
+
+            <a href="login.html">Student Login</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="admin-login.html">Admin Login</a>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © <span id="year"></span> Vrise Academy. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+<script>
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
